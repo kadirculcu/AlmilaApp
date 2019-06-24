@@ -1,0 +1,1 @@
+﻿update Lessons set Name='ingilizce'where Name='matematik'

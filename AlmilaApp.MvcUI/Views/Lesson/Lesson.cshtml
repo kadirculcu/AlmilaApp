@@ -1,0 +1,28 @@
+﻿@model AlmilaApp.Entities.ViewModel.LessonViewModel
+@{
+    ViewData["Title"] = "Lesson";
+}
+
+<h1>Lesson</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            @using (Html.BeginForm("Lesson", "Lesson", FormMethod.Post))
+            {
+                <form method="post">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Lesson.Name, new { @class = "control-label" })
+                        @Html.TextBoxFor(m => m.Lesson.Name, new { @class = "form-control input-lg" })
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </form>
+            }
+            <div class="col-md-6">
+                <main role="main" class="pb-3">
+                   
+                </main>
+            </div>
+        </div>
+    </div>
+    </div>
