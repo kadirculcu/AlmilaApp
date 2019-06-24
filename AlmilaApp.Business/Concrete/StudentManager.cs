@@ -36,6 +36,19 @@ namespace AlmilaApp.Business.Concrete
             _studentDal.Save();
         }
 
+        public StudentDto Get(Expression<Func<Student, bool>> condition = null)
+        {
+            var student = _studentDal.Get(condition);
+            var result = new StudentDto()
+            {
+               Id=student.Id,
+               Name = student.Name,
+               Surname = student.Surname,
+               
+            };
+            return result;
+        }
+
         public List<StudentDto> GetAll(Expression<Func<Student, bool>> condition=null)
         {
             var studentList = new List<StudentDto>();

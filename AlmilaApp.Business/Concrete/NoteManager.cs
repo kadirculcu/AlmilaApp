@@ -57,6 +57,39 @@ namespace AlmilaApp.Business.Concrete
             return notetList;
         }
 
+        public List<NoteDto> GetNotesAllInformations()
+        {
+            var result = new List<NoteDto>();
+            var notes = _noteDal.GetNotesWithAllInformations();
+            foreach (var item in notes)
+            {
+                var note = new NoteDto()
+                {
+                    Final = item.final,
+                    Id = item.Id,
+                    Lesson = new LessonDto()
+                    {
+                        Id = item.Lesson.Id,
+                        Name = item.Lesson.Name
+                    },
+                    LessonId = item.LessonId,
+                    Student = new StudentDto()
+                    {
+                        Id = item.Student.Id,
+                        Name = item.Student.Name,
+                        Surname = item.Student.Surname
+                    },
+                    StudentId = item.StudentId,
+                    Vize   = item.Vize
+                };
+
+                result.Add(note);
+            };
+
+
+            return result;
+        }
+
         public void Update(NoteDto noteDto)
         {
             var note = new Note()

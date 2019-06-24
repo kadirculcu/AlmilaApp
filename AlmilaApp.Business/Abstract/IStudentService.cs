@@ -13,5 +13,6 @@ namespace AlmilaApp.Business.Abstract
         void Add(StudentDto student);
         void Update(StudentDto student);
         void Delete(int id);
+        StudentDto Get(Expression<Func<Student, bool>> condition = null);
     }
 }

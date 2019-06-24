@@ -13,5 +13,6 @@ namespace AlmilaApp.Business.Abstract
         void Add(NoteDto note);
         void Delete(int id);
         void Update(NoteDto note);
+        List<NoteDto> GetNotesAllInformations();
     }
 }

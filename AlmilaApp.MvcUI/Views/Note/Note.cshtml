@@ -4,7 +4,7 @@
     ViewData["Title"] = "Note";
 }
 
-<h1>Note</h1>
+<h1>Not Ekle</h1>
 @using (Html.BeginForm("Note", "Note", FormMethod.Post))
 {
     <form method="post">
@@ -25,7 +25,7 @@
             @Html.TextBoxFor(m => m.Note.StudentId, new { @class = "form-control input-lg" })
         </div>
 
-        <button type="submit" class="btn btn-primary">Register</button>
+        <button type="submit" class="btn btn-primary">Ekle</button>
     </form>
 }
 

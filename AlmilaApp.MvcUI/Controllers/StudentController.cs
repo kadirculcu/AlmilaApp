@@ -49,13 +49,28 @@ namespace AlmilaApp.MvcUI.Controllers
             _studentService.Delete(id);
             return RedirectToAction("StudentList");
         }
-        public IActionResult UpdateStudent()
+        
+        public IActionResult StudentUpdate(int id)
         {
-            return View();
+            if (id == 0)
+            {
+                return NotFound();
+            }
+            var viewModel = new StudentViewModel();
+            viewModel.Student = _studentService.Get(p => p.Id  == id);
+
+            return View(viewModel);
+            
         }
-        public IActionResult StudentUpdate()
+        [HttpPost]
+        public IActionResult StudentUpdate(StudentViewModel viewModel)
         {
-            return View();
+
+            if (ModelState.IsValid)
+            {
+                _studentService.Update(viewModel.Student);
+            }
+            return RedirectToAction("StudentList");
         }
     }
 }

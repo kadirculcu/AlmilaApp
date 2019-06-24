@@ -7,6 +7,6 @@ namespace AlmilaApp.Entities.ViewModel
 {
     public class NotesViewModel
     {
-        public List<NoteDto> note { get; set; }
+        public List<NoteDto> Notes { get; set; }
     }
 }

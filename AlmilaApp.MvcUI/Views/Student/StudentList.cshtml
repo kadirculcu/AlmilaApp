@@ -3,7 +3,7 @@
     ViewData["Title"] = "StudentList";
 }
 
-<h1>StudentList</h1>
+<h1>Öğrenci Listesi</h1>
 
 <table class="table">
     <thead>
@@ -23,7 +23,7 @@
             <td>@item.Name</td>
             <td>@item.Surname</td>
             <td>
-                <a href="@Url.Action("Update",new {id=item.Id })">Update</a>
+                <a href="@Url.Action("StudentUpdate",new {id=item.Id })">Update</a>
                 <a href="@Url.Action("Delete",new {id=item.Id })">Delete</a>
             </td>
 

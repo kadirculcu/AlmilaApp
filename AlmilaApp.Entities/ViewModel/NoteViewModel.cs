@@ -8,5 +8,6 @@ namespace AlmilaApp.Entities.ViewModel
     public class NoteViewModel
     {
         public NoteDto Note { get; set; }
+       
     }
 }

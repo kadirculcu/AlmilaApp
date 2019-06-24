@@ -8,6 +8,7 @@ namespace AlmilaApp.Entities.ViewModel
    public class LessonViewModel
     {
         public LessonDto Lesson { get; set; }
+       
     }
 
     

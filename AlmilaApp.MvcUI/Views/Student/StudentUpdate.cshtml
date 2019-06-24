@@ -1,7 +1,24 @@
-﻿
+﻿@model AlmilaApp.Entities.ViewModel.StudentViewModel
 @{
     ViewData["Title"] = "StudentUpdate";
 }
 
-<h1>StudentUpdate</h1>
-
+<h1>Student Güncelleme</h1>
+@using (Html.BeginForm("StudentUpdate", "Student", FormMethod.Post))
+{
+<form method="post">
+    <div class="form-group">
+        @Html.LabelFor(m => m.Student.Id, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.Student.Id, new { @class = "form-control input-lg" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Student.Name, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.Student.Name, new { @class = "form-control input-lg" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Student.Surname, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.Student.Surname, new { @class = "form-control input-lg" })
+    </div>
+    <button type="submit" class="btn btn-primary">Güncelle</button>
+</form>
+}

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using AlmilaApp.Business.Abstract;
 using AlmilaApp.Business.Concrete;
+using AlmilaApp.Core.DataAccess;
+using AlmilaApp.Core.DataAccess.EntityFramework;
 using AlmilaApp.DataAccess.Abstract;
 using AlmilaApp.DataAccess.Concrete.EntityFramework;
 using Microsoft.AspNetCore.Builder;
@@ -36,10 +38,19 @@ namespace AlmilaApp.MvcUI
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddScoped<DbContext, AlmilaContext>();
+            #region DbContext
+
+            services.AddTransient<DbContext, AlmilaContext>();
+            services.AddScoped(typeof(IEntityRepository<>), typeof(efEntityRepositoryBase<>));
+            services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
+
+            //services.AddDbContext<AlmilaContext>(options => options
+            //        .UseSqlServer(Configuration.GetConnectionString("Default")),
+            //        ServiceLifetime.Transient);
+
+            #endregion
 
             services.AddMvc();
-            services.AddDbContext<AlmilaContext>(item => item.UseSqlServer(Configuration.GetConnectionString("Default"), b => b.MigrationsAssembly("AlmilaApp.DataAccess")));
             services.AddTransient<ILessonService, LessonManager>();
             services.AddTransient<ILessonDal, efLessonDal>();
 

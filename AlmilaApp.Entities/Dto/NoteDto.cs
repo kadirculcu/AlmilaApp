@@ -12,5 +12,7 @@ namespace AlmilaApp.Entities.Dto
         public int LessonId { get; set; }
         public int StudentId { get; set; }
 
+        public LessonDto Lesson { get; set; }
+        public StudentDto Student { get; set; }
     }
 }

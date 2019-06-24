@@ -1,0 +1,33 @@
+﻿@model AlmilaApp.Entities.ViewModel.NotesViewModel
+@{
+    ViewData["Title"] = "NoteList";
+}
+
+<h1>NotLar</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Öğrenci Adı</th>
+            <th>Öğrenci Soyadı</th>
+            <th>Ders Adı</th>
+            <th>Vize</th>
+            <th>Fial</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Notes)
+        {
+            <tr>
+                <td>@item.Student.Name</td>
+                <td>@item.Student.Surname</td>
+                <td>@item.Lesson.Name</td>
+                <td>@item.Vize</td>
+                <td>@item.Final</td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>

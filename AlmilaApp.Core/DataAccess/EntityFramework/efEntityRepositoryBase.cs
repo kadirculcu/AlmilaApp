@@ -44,16 +44,14 @@ namespace AlmilaApp.Core.DataAccess.EntityFramework
             return list;
         }
 
-
-        public void Save()
-        {
-            _context.SaveChanges();
-        }
-
         public void Update(TEntity entity)
         {
             var activeEntity = _context.Entry(entity);
             activeEntity.State = EntityState.Modified;
+        }
+        public void Save()
+        {
+            _context.SaveChanges();
         }
     }
 }

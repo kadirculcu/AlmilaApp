@@ -32,5 +32,11 @@ namespace AlmilaApp.MvcUI.Controllers
             }
             return RedirectToAction("Note");
         }
+        public IActionResult NoteList()
+        {
+            var viewModel = new NotesViewModel();
+            viewModel.Notes = _noteService.GetNotesAllInformations();
+            return View(viewModel);
+        }
     }
 }
