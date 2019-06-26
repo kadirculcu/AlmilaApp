@@ -1,0 +1,33 @@
+﻿@model AlmilaApp.Entities.ViewModel.NoteViewModel
+@{
+    ViewData["Title"] = "Update";
+}
+
+<h1>Not Günecelleme</h1>
+@using (Html.BeginForm("Update", "Note", FormMethod.Post))
+{
+<form method="post">
+    <div class="form-group">
+        @Html.LabelFor(m => m.Note.Id, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.Note.Id, new { @class = "form-control input-lg" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Note.Vize, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.Note.Vize, new { @class = "form-control input-lg" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Note.Final, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.Note.Final, new { @class = "form-control input-lg" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Note.StudentId, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.Note.StudentId, new { @class = "form-control input-lg" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Note.LessonId, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.Note.LessonId, new { @class = "form-control input-lg" })
+    </div>
+    <button type="submit" class="btn btn-primary">Güncelle</button>
+</form>
+}
+

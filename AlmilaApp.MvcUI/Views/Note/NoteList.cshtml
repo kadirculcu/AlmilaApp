@@ -8,24 +8,31 @@
 <table class="table">
     <thead>
         <tr>
+            <th>Not Id</th>
             <th>Öğrenci Adı</th>
             <th>Öğrenci Soyadı</th>
             <th>Ders Adı</th>
             <th>Vize</th>
             <th>Fial</th>
+            <th>Güncelle/Sil</th>
 
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model.Notes)
         {
-            <tr>
-                <td>@item.Student.Name</td>
-                <td>@item.Student.Surname</td>
-                <td>@item.Lesson.Name</td>
-                <td>@item.Vize</td>
-                <td>@item.Final</td>
-            </tr>
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Student.Name</td>
+            <td>@item.Student.Surname</td>
+            <td>@item.Lesson.Name</td>
+            <td>@item.Vize</td>
+            <td>@item.Final</td>
+            <td>
+                <a href="@Url.Action("Update",new {id=item.Id })">Update</a>
+                <a href="@Url.Action("Delete",new {id=item.Id })">Delete</a>
+            </td>
+        </tr>
         }
 
     </tbody>

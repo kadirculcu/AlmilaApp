@@ -22,7 +22,7 @@ namespace AlmilaApp.Business.Concrete
             var note = new Note()
             {
                 Vize =noteDto.Vize,
-                final=noteDto.Vize,
+                final=noteDto.Final,
                 LessonId=noteDto.LessonId,
                 StudentId=noteDto.StudentId,
             };
@@ -37,6 +37,21 @@ namespace AlmilaApp.Business.Concrete
             _noteDal.Save();
         }
 
+        public NoteDto Get(Expression<Func<Note, bool>> condition = null)
+        {
+          var note = _noteDal.Get(condition);
+            var result = new NoteDto()
+            {
+               Id=note.Id,
+               Vize = note.Vize,
+               Final = note.final,
+               LessonId=note.LessonId,
+               StudentId=note.StudentId,
+               
+            };
+            return result;
+        }
+
         public List<NoteDto> GetAll(Expression<Func<Note, bool>> condition=null)
         {
             var notetList = new List<NoteDto>();
@@ -46,6 +61,7 @@ namespace AlmilaApp.Business.Concrete
             {
                 var note = new NoteDto()
                 {
+                    Id = item.Id,
                     Vize = item.Vize,
                     Final = item.final,
                     LessonId=item.LessonId,
@@ -93,9 +109,10 @@ namespace AlmilaApp.Business.Concrete
         public void Update(NoteDto noteDto)
         {
             var note = new Note()
-            {
+            { 
+                Id=noteDto.Id,
                 Vize =noteDto.Vize,
-                final=noteDto.Vize,
+                final=noteDto.Final,
                 LessonId=noteDto.LessonId,
                 StudentId=noteDto.StudentId,
             };

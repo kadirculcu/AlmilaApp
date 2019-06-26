@@ -30,13 +30,43 @@ namespace AlmilaApp.MvcUI.Controllers
             {
                 _noteService.Add(viewModel.Note);
             }
-            return RedirectToAction("Note");
+            return RedirectToAction("NoteList");
         }
         public IActionResult NoteList()
         {
             var viewModel = new NotesViewModel();
             viewModel.Notes = _noteService.GetNotesAllInformations();
             return View(viewModel);
+        }
+        public IActionResult Update(int id)
+        {
+            if (id == 0)
+            {
+                return NotFound();
+            }
+            var viewModel = new NoteViewModel();
+            viewModel.Note = _noteService.Get(p => p.Id == id);
+
+            return View(viewModel);
+        }
+        [HttpPost]
+        public IActionResult Update(NoteViewModel viewModel)
+        {
+
+            if (ModelState.IsValid)
+            {
+                _noteService.Update(viewModel.Note);
+            }
+            return RedirectToAction("NoteList");
+        }
+        public IActionResult Delete(int id)
+        {
+            if (id == 0)
+            {
+                return NotFound();
+            }
+            _noteService.Delete(id);
+            return RedirectToAction("NoteList");
         }
     }
 }

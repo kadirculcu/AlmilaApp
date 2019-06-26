@@ -14,5 +14,7 @@ namespace AlmilaApp.Business.Abstract
         void Delete(int id);
         void Update(NoteDto note);
         List<NoteDto> GetNotesAllInformations();
+        NoteDto Get(Expression<Func<Note, bool>> condition = null);
+
     }
 }
