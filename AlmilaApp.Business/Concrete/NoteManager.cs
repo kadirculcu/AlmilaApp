@@ -54,7 +54,7 @@ namespace AlmilaApp.Business.Concrete
 
         public List<NoteDto> GetAll(Expression<Func<Note, bool>> condition=null)
         {
-            var notetList = new List<NoteDto>();
+            var noteList = new List<NoteDto>();
             var notes = _noteDal.GetList(condition);
 
             foreach (var item in notes)
@@ -68,15 +68,17 @@ namespace AlmilaApp.Business.Concrete
                     StudentId=item.StudentId,
                 };
 
-                notetList.Add(note);
+                noteList.Add(note);
             }
-            return notetList;
+            return noteList;
         }
 
         public List<NoteDto> GetNotesAllInformations()
         {
             var result = new List<NoteDto>();
+            
             var notes = _noteDal.GetNotesWithAllInformations();
+            
             foreach (var item in notes)
             {
                 var note = new NoteDto()
@@ -96,7 +98,8 @@ namespace AlmilaApp.Business.Concrete
                         Surname = item.Student.Surname
                     },
                     StudentId = item.StudentId,
-                    Vize   = item.Vize
+                    Vize   = item.Vize,
+                    ort=(item.Vize*0.3)+(item.final*0.7)
                 };
 
                 result.Add(note);

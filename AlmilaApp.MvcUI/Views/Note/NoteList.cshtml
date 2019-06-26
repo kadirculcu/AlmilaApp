@@ -13,7 +13,8 @@
             <th>Öğrenci Soyadı</th>
             <th>Ders Adı</th>
             <th>Vize</th>
-            <th>Fial</th>
+            <th>Final</th>
+            <th>Not Ortalaması</th>
             <th>Güncelle/Sil</th>
 
         </tr>
@@ -28,6 +29,7 @@
             <td>@item.Lesson.Name</td>
             <td>@item.Vize</td>
             <td>@item.Final</td>
+            <td>@item.ort</td>
             <td>
                 <a href="@Url.Action("Update",new {id=item.Id })">Update</a>
                 <a href="@Url.Action("Delete",new {id=item.Id })">Delete</a>
