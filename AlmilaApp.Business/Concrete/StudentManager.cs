@@ -1,4 +1,6 @@
 ﻿using AlmilaApp.Business.Abstract;
+using AlmilaApp.Business.ValidationRules.FluentValidation;
+using AlmilaApp.Core.Aspect.ValidationAspect;
 using AlmilaApp.DataAccess.Abstract;
 using AlmilaApp.Entities.Concrete;
 using AlmilaApp.Entities.Dto;
@@ -17,8 +19,11 @@ namespace AlmilaApp.Business.Concrete
             _studentDal = studentDal;
         }
 
+       
+
         public void Add(StudentDto studentDto)
         {
+          //  ValidationAspect.FluentValidate(new StudentValidatior(), studentDto);
             var student = new Student()
             {
                 Name = studentDto.Name,

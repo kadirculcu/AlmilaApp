@@ -1,0 +1,8 @@
+﻿@model AlmilaApp.MvcUI.Models.LessonListViewModel
+
+<div class="list-group">
+    @foreach (var item in Model.Lessons)
+    {
+        <a href="#" class="list-group-item">@item.Name</a>
+    }
+     </div>

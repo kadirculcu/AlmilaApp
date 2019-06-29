@@ -4,10 +4,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using AlmilaApp.Business.Abstract;
 using AlmilaApp.Business.Concrete;
+using AlmilaApp.Business.ValidationRules.FluentValidation;
+using AlmilaApp.Core.Aspect.ValidationAspect;
 using AlmilaApp.Core.DataAccess;
 using AlmilaApp.Core.DataAccess.EntityFramework;
 using AlmilaApp.DataAccess.Abstract;
 using AlmilaApp.DataAccess.Concrete.EntityFramework;
+using AlmilaApp.Entities.Dto;
+using AlmilaApp.Entities.ViewModel;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -37,6 +43,14 @@ namespace AlmilaApp.MvcUI
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+
+           // services.AddMvc().AddFluentValidation();
+            services.AddMvc(opt =>
+            {
+                opt.Filters.Add(typeof(ValidationAspect));
+            }).AddFluentValidation();
+           services.AddTransient<IValidator<StudentViewModel>, StudentValidatior>();
+           services.AddTransient<IValidator<NoteViewModel>, NoteValidatior>();
 
             #region DbContext
 

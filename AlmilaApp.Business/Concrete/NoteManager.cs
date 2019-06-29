@@ -73,6 +73,11 @@ namespace AlmilaApp.Business.Concrete
             return noteList;
         }
 
+        private double GetOrtalama (int vize,int final)
+        {
+            double ortalama = vize * 0.3 + final * 0.7;
+            return ortalama;
+        }
         public List<NoteDto> GetNotesAllInformations()
         {
             var result = new List<NoteDto>();
@@ -99,7 +104,7 @@ namespace AlmilaApp.Business.Concrete
                     },
                     StudentId = item.StudentId,
                     Vize   = item.Vize,
-                    ort=(item.Vize*0.3)+(item.final*0.7)
+                    Ort=GetOrtalama(item.Vize,item.final)
                 };
 
                 result.Add(note);
